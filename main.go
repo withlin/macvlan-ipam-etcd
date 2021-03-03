@@ -9,12 +9,13 @@ import (
 	"github.com/containernetworking/cni/pkg/types"
 	"github.com/containernetworking/cni/pkg/types/current"
 	"github.com/containernetworking/cni/pkg/version"
+	bv "github.com/containernetworking/plugins/pkg/utils/buildversion"
 	"github.com/withlin/macvlan-ipam-etcd/backend/allocator"
 	"github.com/withlin/macvlan-ipam-etcd/backend/etcd"
 )
 
 func main() {
-	skel.PluginMain(cmdAdd, cmdChek, cmdDel, version.All, "withlin auth")
+	skel.PluginMain(cmdAdd, cmdChek, cmdDel, version.All, bv.BuildString("macvlan-ipam-etcd"))
 }
 
 func cmdChek(args *skel.CmdArgs) error {
