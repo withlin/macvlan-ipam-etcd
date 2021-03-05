@@ -50,8 +50,15 @@ type IPAMConfig struct {
 	ResolvConf string         `json:"resolvConf"`
 	Ranges     []RangeSet     `json:"ranges"`
 	IPArgs     []net.IP       `json:"-"` // Requested IPs from CNI_ARGS and args
+	EtcdConfig *EtcdConfig    `json:"etcdConfig"`
 }
 
+type EtcdConfig struct {
+	EtcdURL               string `json:"etcdURL"`
+	EtcdCertFile          string `json:"etcdCertFile"`
+	EtcdKeyFile           string `json:"etcdKeyFile"`
+	EtcdTrustedCAFileFile string `json:"etcdTrustedCAFileFile"`
+}
 type IPAMEnvArgs struct {
 	types.CommonArgs
 	IP net.IP `json:"ip,omitempty"`
@@ -68,14 +75,6 @@ type Range struct {
 	RangeEnd   net.IP      `json:"rangeEnd,omitempty"`   // The last ip, inclusive
 	Subnet     types.IPNet `json:"subnet"`
 	Gateway    net.IP      `json:"gateway,omitempty"`
-	EtcdConfig *EtcdConfig `json:"etcdConfig"`
-}
-
-type EtcdConfig struct {
-	EtcdURL               string `json:"etcdURL"`
-	EtcdCertFile          string `json:"etcdCertFile"`
-	EtcdKeyFile           string `json:"etcdKeyFile"`
-	EtcdTrustedCAFileFile string `json:"etcdTrustedCAFileFile"`
 }
 
 // NewIPAMConfig creates a NetworkConfig from the given network name.

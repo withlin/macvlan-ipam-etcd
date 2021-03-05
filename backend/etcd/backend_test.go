@@ -8,15 +8,10 @@ import (
 
 func Test_Lock(t *testing.T) {
 	ipamConfig := &allocator.IPAMConfig{
-		Range: &allocator.Range{
-			EtcdConfig: &allocator.EtcdConfig{
-				EtcdURL: "http://localhost:2379",
-			},
-		},
+		Range: &allocator.Range{},
 	}
 
 	s1, err := New("", ipamConfig)
-	err = s1.Unlock()
 	if err != nil {
 		t.Error(err)
 	}

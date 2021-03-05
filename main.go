@@ -39,7 +39,6 @@ func cmdAdd(args *skel.CmdArgs) error {
 		result.DNS = *dns
 	}
 
-	fmt.Println("--------------->", ipamConf)
 	store, err := etcd.New(ipamConf.Name, ipamConf)
 	if err != nil {
 		return err

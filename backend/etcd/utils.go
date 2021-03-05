@@ -1,7 +1,6 @@
 package etcd
 
 import (
-	"fmt"
 	"strings"
 	"time"
 
@@ -17,7 +16,6 @@ func connectStore(etcdConfig *allocator.EtcdConfig) (*clientv3.Client, error) {
 	if strings.HasPrefix(etcdConfig.EtcdURL, "https") {
 		etcdClient, err = connectWithTLS(etcdConfig.EtcdURL, etcdConfig.EtcdCertFile, etcdConfig.EtcdKeyFile, etcdConfig.EtcdTrustedCAFileFile)
 	} else {
-		fmt.Println("--------------->进来了1")
 		etcdClient, err = connectWithoutTLS(etcdConfig.EtcdURL)
 	}
 
@@ -32,7 +30,6 @@ func connectWithoutTLS(url string) (*clientv3.Client, error) {
 		Endpoints:   []string{url},
 		DialTimeout: 5 * time.Second,
 	})
-	fmt.Println("--------------->进来了2")
 
 	return cli, err
 }
