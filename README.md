@@ -195,5 +195,5 @@ rtt min/avg/max/mdev = 0.087/0.093/0.099/0.006 ms
 
 ### 后续支持
 
-使用Daemonset的方式，部署到容器云。
-
+1. 使用Daemonset的方式，部署到容器云。
+2. 支持读取Pod的Anno动态注解
